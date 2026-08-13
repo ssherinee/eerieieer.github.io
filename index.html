@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Photobooth" />
+<meta property="og:description" content="made for Krisandy's birthday bash!" />
+
+<title>P3 🎞</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!--HOME-->
+  <section id="screen-home" class="screen active screen-home">
+    <img class="home-bg" src="assets/home-bg.png" alt="" />
+    <div class="home-inner">
+      <p class="home-greeting">hello! :C</p>
+      <p class="home-message"> 
+        this Persona 3 inspired photobooth is created as a tribute to <br>
+        the game interface as well as krisandy's birthday bash! <br>
+        <!--i love my boyfriend <3 -->
+        <br>
+        feel free to try it (●'◡'●)
+        <br>
+        <br>
+      </p>
+      <button id="startBtn" class="btn btn-home btn-lg">PRESS START</button>
+    </div>
+    </section>
+
+  <!--CAMERA-->
+  <section id="screen-capture" class="screen screen-capture">
+    <div class="capture-topbar">
+      <button id="backHomeBtn" class="btn btn-back">&larr; Home</button>
+    </div>
+
+    <div class="stage-wrap">
+      <div class="stage" id="stage">
+        <video id="liveVideo" autoplay playsinline muted></video>
+        <canvas id="previewCanvas" width="1280" height="720"></canvas>
+        <div id="countdownOverlay" class="countdown-overlay">3</div>
+        <div id="flashOverlay" class="flash-overlay"></div>
+      </div>
+    </div>
+
+    <input type="file" id="uploadInput" accept="image/*" hidden />
+
+    <div class="capture-controls">
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="photo">Photo</button>
+        <button class="mode-tab" data-mode="gif">GIF</button>
+        <button class="mode-tab" data-mode="upload">Upload</button>
+      </div>
+      <p id="captureHint" class="hint"></p>
+      <button id="shutterBtn" class="btn btn-primary btn-lg">Take Photo</button>
+      <button id="uploadPickBtn" class="btn btn-primary btn-lg" hidden>Choose Image</button>
+      <button id="useUploadBtn" class="btn btn-primary btn-lg" hidden>Use This Photo</button>
+    </div>
+  </section>
+
+  <!--RESULT-->
+  <section id="screen-final" class="screen">
+    <div class="final-inner">
+      <h2>Here's your shot!</h2>
+      <div class="result-frame">
+        <img id="resultImg" alt="Your captured photo" />
+      </div>
+      <div class="final-controls">
+        <button id="downloadBtn" class="btn btn-primary">Download</button>
+        <button id="retakeBtn" class="btn btn-ghost">Retake</button>
+        <button id="homeBtn" class="btn btn-ghost">Home</button>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="app-footer">created by eerieieer</footer>
+
+  <script src="js/vendor/gif.js"></script>
+  <script src="js/compositor.js"></script>
+  <script src="js/camera.js"></script>
+  <script src="js/capture-photo.js"></script>
+  <script src="js/capture-gif.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

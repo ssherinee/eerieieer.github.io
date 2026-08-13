@@ -1,0 +1,406 @@
+@font-face {
+  font-family: 'FontSona';
+  src: url('../assets/fonts/FontsonaQ.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;   
+}
+
+:root {
+  --bg: #0f1220;
+  --panel: #1a1e33;
+  --accent: #6ea8fe;
+  --accent-dark: #3d6fd8;
+  --text: #f4f6ff;
+  --text-dim: #a9b0cc;
+  --radius: 16px;
+  --font-family: 'FontSona', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family);
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ---------- Home ---------- */
+.screen-home {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.home-greeting {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 86, 216, 0.6);
+}
+
+.home-message {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 1.2rem;
+  font-weight: 200;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  //-webkit-text-stroke: 0.2px #000000;   /* outline around each letter */
+}
+
+.home-header {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+
+.home-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-bottom: 8%;
+}
+
+.btn-home {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  background: #ffffff;
+  color: var(--accent);
+  padding: 16px 90px;   
+  border-radius: 14px;   
+}
+
+.btn-home:hover {
+  background: #ffffff;
+  color: var(--accent-dark);
+}
+
+.btn-home:active {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.btn:active { transform: scale(0.96); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #0f1220;
+}
+
+.btn-primary:hover { background: var(--accent-dark); color: #fff; }
+
+
+.btn-lg {
+  font-size: 1.15rem;
+  padding: 16px 40px;
+}
+
+.btn[hidden] { display: none; }
+
+/* ---------- Capture screen ---------- */
+.screen-capture {
+  background: linear-gradient(160deg, #0a1a3a 0%, #123166 35%, #1f5fae 70%, #3f8fe0 100%);
+}
+
+.capture-topbar {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--panel);
+  padding: 6px;
+  border-radius: 999px;
+}
+
+.mode-tab {
+  font-family: var(--font-family);
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mode-tab.active {
+  background: var(--accent);
+  color: #0f1220;
+}
+
+.stage-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 1280 / 720;
+  background: #000;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.stage video {
+  display: none; /* raw video is never shown directly; canvas shows the composited preview */
+}
+
+.stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 8rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+.flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flash-overlay.flash {
+  animation: flash 350ms ease-out;
+}
+
+@keyframes flash {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.capture-controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.capture-controls .mode-tabs {
+  margin-bottom: 6px;
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  margin: 0;
+}
+
+/* ---------- Final screen ---------- */
+.final-inner {
+  text-align: center;
+  max-width: 720px;
+  width: 100%;
+}
+
+.result-frame {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  margin: 20px 0;
+  background: #000;
+}
+
+.result-frame img {
+  width: 100%;
+  display: block;
+}
+
+.final-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn,
+.btn:hover,
+.btn:active {
+  position: relative;
+  isolation: isolate;            /* keeps the shine behind the text */
+  overflow: hidden;
+  color: #17306b;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: linear-gradient(to bottom, #a9d8f2 0%, #8cc3ea 55%, #b7e4f7 100%);
+  border: 2px solid #3f5fae;
+  box-shadow:
+    inset 0 -6px 10px rgba(255, 255, 255, 0.55),   /* bottom glow */
+    inset 0 0 6px rgba(40, 80, 170, 0.45),         /* inner edge */
+    0 4px 10px rgba(0, 0, 0, 0.35);                /* drop shadow */
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 3px;
+  left: 6%;
+  right: 6%;
+  height: 48%;
+  border-radius:
+
+
+  #backHomeBtn,
+  #backHomeBtn:hover,
+  #backHomeBtn:active {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    overflow: visible !important;
+    color: var(--text-dim) !important;
+  }
+  
+  #backHomeBtn::before {
+    display: none !important;     
+  }
+  
+  #backHomeBtn:hover {
+    color: var(--text) !important;
+  }
+
+
+.app-footer {
+  position: absolute
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.55);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ---------- Mobile ---------- */
+.screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+@media (max-width: 768px) {
+  .screen { padding: 12px 12px 36px; }   /
+  .screen-home { padding: 0; }
+
+  /* Home */
+  .home-inner { gap: 8px; padding-bottom: 12%; }
+  .home-greeting { font-size: clamp(0.9rem, 4vw, 1.1rem); }
+  .home-header   { font-size: clamp(1.4rem, 7vw, 2rem); text-align: center; padding: 0 12px; }
+  .home-message  {
+    max-width: 88%;
+    font-size: clamp(0.7rem, 3vw, 0.85rem);
+    line-height: 1.4;
+    padding: 10px 14px;
+  }
+  .btn-home { padding: 10px 36px; font-size: 0.5rem; }
+
+  /* Buttons */
+  .btn    { font-size: 0.55rem; padding: 5px 10px; }
+  .btn-lg { font-size: 0.6rem;  padding: 6px 14px; }
+  .btn-home { font-size: 0.55rem; padding: 5px 18px; }
+
+  /* Capture screen */
+  .capture-topbar { margin-bottom: 8px; }
+  .stage { border-radius: 10px; }
+  .mode-tabs { padding: 4px; gap: 4px; }
+  .mode-tab  { padding: 6px 12px; font-size: 0.75rem; }
+  .capture-controls { margin-top: 12px; gap: 6px; }
+  .hint { font-size: 0.75rem; text-align: center; padding: 0 8px; }
+  .countdown-overlay { font-size: 3.5rem; }
+
+  /* Result screen */
+  .final-inner h2 { font-size: 1.1rem; margin: 0; }
+  .result-frame { margin: 12px 0; border-radius: 10px; }
+  .final-controls { gap: 8px; }
+  .final-controls .btn { flex: 1 1 0; padding: 9px 8px; }
+
+  /* Footer */
+  .app-footer { font-size: 0.6rem; bottom: 6px; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .home-header { font-size: 1.3rem; }
+  .btn-lg { padding: 10px 22px; }
+  .mode-tab { padding: 6px 9px; font-size: 0.7rem; }
+}
