@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Photobooth" />
-<meta property="og:description" content="made for Krisandy's birthday bash!" />
+<meta property="og:url" content="https://p3.eerieieer.art/" />
+<meta property="og:image" content="https://p3.eerieieer.art/assets/preview.png" />
+<meta name="twitter:image" content="https://p3.eerieieer.art/assets/preview.png" />
 
 <title>P3 🎞</title>
 <link rel="stylesheet" href="css/style.css" />
@@ -33,7 +33,7 @@
   <!--CAMERA-->
   <section id="screen-capture" class="screen screen-capture">
     <div class="capture-topbar">
-      <button id="backHomeBtn" class="btn btn-back">&larr; Home</button>
+      <button id="backHomeBtn" class="btn btn-back">&larr; go back</button>
     </div>
 
     <div class="stage-wrap">
@@ -49,33 +49,33 @@
 
     <div class="capture-controls">
       <div class="mode-tabs">
-        <button class="mode-tab active" data-mode="photo">Photo</button>
+        <button class="mode-tab active" data-mode="photo">photo</button>
         <button class="mode-tab" data-mode="gif">GIF</button>
-        <button class="mode-tab" data-mode="upload">Upload</button>
+        <button class="mode-tab" data-mode="upload">upload</button>
       </div>
       <p id="captureHint" class="hint"></p>
-      <button id="shutterBtn" class="btn btn-primary btn-lg">Take Photo</button>
-      <button id="uploadPickBtn" class="btn btn-primary btn-lg" hidden>Choose Image</button>
-      <button id="useUploadBtn" class="btn btn-primary btn-lg" hidden>Use This Photo</button>
+      <button id="shutterBtn" class="btn btn-primary btn-lg">take photo</button>
+      <button id="uploadPickBtn" class="btn btn-primary btn-lg" hidden>choose image</button>
+      <button id="useUploadBtn" class="btn btn-primary btn-lg" hidden>use this photo?</button>
     </div>
   </section>
 
   <!--RESULT-->
   <section id="screen-final" class="screen">
     <div class="final-inner">
-      <h2>Here's your shot!</h2>
+      <h2>and you're doneee (｡･∀･)ﾉﾞ</h2>
       <div class="result-frame">
         <img id="resultImg" alt="Your captured photo" />
       </div>
       <div class="final-controls">
-        <button id="downloadBtn" class="btn btn-primary">Download</button>
-        <button id="retakeBtn" class="btn btn-ghost">Retake</button>
-        <button id="homeBtn" class="btn btn-ghost">Home</button>
-      </div>
+        <button id="downloadBtn" class="btn btn-primary">download</button>
+        <button id="retakeBtn" class="btn btn-ghost">retake?</button>
+        <button id="homeBtn" class="btn btn-ghost">home</button>
     </div>
   </section>
   
   <footer class="app-footer">created by eerieieer</footer>
+  <footer class="app-footer">characters and licensed by atlus</footer>
 
   <script src="js/vendor/gif.js"></script>
   <script src="js/compositor.js"></script>
