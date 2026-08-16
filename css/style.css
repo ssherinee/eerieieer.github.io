@@ -395,10 +395,9 @@ html, body {
   .final-controls .btn { flex: 1 1 0; padding: 9px 8px; }
 
   /* Footer */
-  .app-footer { font-size: 0.6rem; bottom: 6px; }
+  .app-footer { font-size: 0.4rem; bottom: 6px; }
 }
 
-/* Very small phones */
 @media (max-width: 380px) {
   .home-header { font-size: 1.3rem; }
   .btn-lg { padding: 10px 22px; }

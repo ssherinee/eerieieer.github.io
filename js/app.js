@@ -1,6 +1,5 @@
 (() => {
-  // ---------- DOM refs ----------
-  const screens = {
+ const screens = {
     home: document.getElementById('screen-home'),
     capture: document.getElementById('screen-capture'),
     final: document.getElementById('screen-final')
@@ -76,13 +75,13 @@
     if (mode === 'upload') {
       PBCamera.stop();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      captureHint.textContent = 'Choose an image from your device.';
+      captureHint.textContent = 'choose an image from your device.';
     } else {
-      shutterBtn.textContent = mode === 'photo' ? 'Take Photo' : 'Record GIF';
+      shutterBtn.textContent = mode === 'photo' ? 'take photo' : 'record GIF';
       try {
         await PBCamera.start(videoEl);
       } catch (err) {
-        captureHint.textContent = 'Camera access failed: ' + err.message;
+        captureHint.textContent = 'camera access failed: ' + err.message;
       }
     }
   }
@@ -119,7 +118,7 @@
         finishCapture(blob, 'image/gif');
       }
     } catch (err) {
-      captureHint.textContent = 'Something went wrong: ' + err.message;
+      captureHint.textContent = 'something went wrong: ' + err.message;
     } finally {
       busy = false;
       shutterBtn.disabled = false;
@@ -139,7 +138,7 @@
       uploadedImg = img;
       PBCompositor.drawComposite(ctx, uploadedImg, { mirror: false });
       useUploadBtn.hidden = false;
-      captureHint.textContent = 'Looks good? Use this photo, or choose a different one.';
+      captureHint.textContent = 'looks good? usee this photo or choose a different one.';
     };
     img.src = URL.createObjectURL(file);
   }

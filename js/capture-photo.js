@@ -1,7 +1,3 @@
-// capture-photo.js
-// Countdown, then draw one composited frame to the output canvas and
-// export it as a JPEG blob.
-
 const PBCapturePhoto = (() => {
 
   function runCountdown(countdownEl, seconds = 3) {

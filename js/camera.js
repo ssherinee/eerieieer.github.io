@@ -3,7 +3,7 @@ const PBCamera = (() => {
   let currentStream = null;
 
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    throw new Error('Camera needs a secure connection. Try Upload instead.');
+    throw new Error('camera needs a secure connection. try upload instead.');
   }
   async function start(videoEl) {
     stop(); // make sure any previous stream is released first

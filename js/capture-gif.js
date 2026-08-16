@@ -1,12 +1,3 @@
-// capture-gif.js
-// Countdown, then burst-capture composited frames at a fixed interval and
-// encode them into an animated GIF using gif.js (runs in a Web Worker,
-// so encoding doesn't freeze the UI).
-//
-// GIF frames are captured at a smaller resolution than the photo canvas --
-// full 1280x720 GIF encoding is slow and produces huge files, and a GIF is
-// a lightweight/fun keepsake, not a high-res deliverable.
-
 const PBCaptureGif = (() => {
   const GIF_W = 640;
   const GIF_H = 360;
@@ -32,11 +23,11 @@ const PBCaptureGif = (() => {
     for (let i = 0; i < FRAME_COUNT; i++) {
       PBCompositor.drawComposite(offCtx, videoEl, { w: GIF_W, h: GIF_H, mirror: true });
       frames.push(offCtx.getImageData(0, 0, GIF_W, GIF_H));
-      if (onProgress) onProgress(`Capturing ${i + 1}/${FRAME_COUNT}...`);
+      if (onProgress) onProgress(`capturing ${i + 1}/${FRAME_COUNT}...`);
       await delay(FRAME_INTERVAL_MS);
     }
 
-    if (onProgress) onProgress('Encoding GIF...');
+    if (onProgress) onProgress('encoding GIF...');
 
     return new Promise((resolve, reject) => {
       const gif = new GIF({

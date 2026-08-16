@@ -1,9 +1,3 @@
-// compositor.js
-// Draws whatever source (live <video> or a static <img>) into a canvas,
-// mirrored and "cover"-fitted, then lays your frame.png on top.
-// Because frame.png has a transparent window, the source shows through
-// automatically wherever the frame is transparent -- no manual masking needed.
-
 const PBCompositor = (() => {
   const CANVAS_W = 1280;
   const CANVAS_H = 720;
